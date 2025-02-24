@@ -1,27 +1,126 @@
-Key Requirements:
-		Program Name: minishell
-		Turn-in Files: Makefile, *.h, *.c
-Makefile:
-		Include rules: NAME, all, clean, fclean, re
-Mandatory Part:
-		Program Behavior:
-						My minishell should:
+# 🚀 Minishell - Custom Shell Implementation
 
-1.	Display a prompt when waiting for a new command.
-2.	Have a working history.
-3.	Search and launch the right executable based on the PATH variable or using a relative or absolute path.
-4.	Avoid using more than one global variable to indicate a received signal.
-5.	Not interpret unclosed quotes or special characters that are not required by the subject.
-6.	Handle single quotes ('), preventing the shell from interpreting metacharacters in the quoted sequence.
-7.	Handle double quotes (") preventing the shell from interpreting metacharacters except for $ (dollar sign).
-8.	Implement redirections: <, >, <<, >>.
-9.	Implement pipes (| character).
-10.	Handle environment variables ($ followed by a sequence of characters).
-11.	Handle $? which should expand to the exit status of the most recently executed foreground pipeline.
-12.	Handle ctrl-C, ctrl-D, and ctrl-\ as described.
-13.	Implement builtins: echo with option -n, cd, pwd, export, unset, env, exit.
-14.	Recommendations:
-15.	Ensure Norm Compliance.
-16.	Test thoroughly, especially with various edge cases.
-17.	Handle memory leaks in my own code.
-18.	Include a Makefile that compiles my source files with the required flags.
+<div align="center">
+
+
+</div>
+
+## Overview
+A custom implementation of a Unix shell, featuring command execution, built-in commands, and input/output redirection. This project demonstrates advanced C programming concepts including process management, signal handling, and parser implementation.
+
+
+## ✨ Features
+
+### Command Processing
+- Custom command prompt display
+- Command history management
+- PATH-based executable location
+- Relative/absolute path handling
+
+### Quote Handling
+```c
+// Support for both quote types
+'single quotes' // Literal interpretation
+"double quotes" // Variable expansion enabled
+```
+
+### Redirections & Pipes
+- Input redirection (`<`)
+- Output redirection (`>`, `>>`)
+- Heredoc support (`<<`)
+- Multiple pipe handling (`|`)
+
+### Built-in Commands
+- `echo` with `-n` option
+- `cd` with path support
+- `pwd` current directory
+- `export` variable management
+- `unset` variable removal
+- `env` environment display
+- `exit` with status
+
+## 🛠 Technical Implementation
+
+### Signal Handling
+- CTRL+C (SIGINT) management
+- CTRL+D (EOF) handling
+- CTRL+\ (SIGQUIT) support
+
+### Environment Management
+- Variable expansion (`$VAR`)
+- Exit status access (`$?`)
+- Dynamic environment updates
+
+## 💻 Usage
+
+### Compilation
+```bash
+# Build the shell
+make
+
+# Clean build files
+make clean
+
+# Full rebuild
+make re
+```
+
+### Running
+```bash
+./minishell
+
+minishell$ echo "Hello, $USER!"
+minishell$ cd documents
+minishell$ ls -l | grep ".txt" > output.txt
+```
+
+
+## 🔍 Key Features Demonstrated
+
+### Parser Implementation
+- Token recognition
+- Command separation
+- Quote handling
+- Syntax validation
+
+### Process Management
+- Fork operations
+- Pipe creation
+- Signal handling
+- Exit status management
+
+### Memory Management
+- Dynamic allocation
+- Proper deallocation
+- Memory leak prevention
+- Resource cleanup
+
+## 👤 Author
+- group project
+
+## 🧪 Testing
+```bash
+# Basic Commands
+echo "Testing" > file.txt
+cat < input.txt | grep "pattern" > output.txt
+
+# Built-ins
+export TEST=value
+echo $TEST
+cd ~/documents
+```
+
+## 📈 Project Status
+- ✅ Command execution
+- ✅ Built-in commands
+- ✅ Redirections & pipes
+- ✅ Signal handling
+- ✅ Memory management
+
+
+
+<div align="center">
+
+*"Building robust shells from scratch"*
+
+</div>
